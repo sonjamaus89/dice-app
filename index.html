@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <style>
+    html, body {
+      min-height: 100%;
+      height: 100%;
+      max-width: 400px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    html body span {
+      color: white;
+    }
+
+    #loading {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      height: 100%;
+      width: 100%;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+
+    #loading span {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .lds-hourglass {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+    .lds-hourglass:after {
+      content: " ";
+      display: block;
+      border-radius: 50%;
+      width: 0;
+      height: 0;
+      margin: 8px;
+      box-sizing: border-box;
+      border: 32px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: lds-hourglass 1.2s infinite;
+    }
+    @keyframes lds-hourglass {
+      0% {
+        transform: rotate(0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+      50% {
+        transform: rotate(900deg);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+      100% {
+        transform: rotate(1800deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id='loading'>
+    <div class='lds-hourglass'></div>
+    <span>Please wait...</span>
+  </div>
+  <form id="game-container">
+    <div id="balance-container">
+      <span>Balance</span>
+      <span id="balance"> --- </span>
+    </div>
+    <div id="roll-dice"></div>
+    <div id="choose-roll-dice">
+      <div class='roll-dice-icon' name='1'></div>
+      <div class='roll-dice-icon' name='2'></div>
+      <div class='roll-dice-icon' name='3'></div>
+      <div class='roll-dice-icon' name='4'></div>
+      <div class='roll-dice-icon' name='5'></div>
+      <div class='roll-dice-icon' name='6'></div>
+    </div>
+    <div id="bet-amount">
+      <div>
+        <span>BET</span>
+      </div>
+      <div>
+        <input type='button' id="down" value='-'></input>
+        <input required id="amount" value='0' type='number'></input>
+        <input type='button' id="up" value='+'></input>
+      </div>
+    </div>
+    <div id="bet-result">
+      <span id="label"></span>
+      <span id="amount"></span>
+    </div>
+    <button id="submit-roll" type="submit"></button>
+    <div id='message-box'>
+      <span></span>
+    </div>
+  </form>
+</body>
+</html>
